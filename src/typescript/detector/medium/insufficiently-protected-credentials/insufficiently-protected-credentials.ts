@@ -31,7 +31,7 @@ function insufficientlyProtectedCredentialsCompliant() {
     var  User = new Users()
     User.findOne({ name: req.body.name }, function (err: any, user: any) {
         // Compliant: validated object before passing into `jsonwebtoken.sign()`.
-        var token = jwt.sign(name , key, { expiresIn: 60 * 60 * 10 })
+        var token = jwt.sign(name , key, { algorithm: 'HS256', expiresIn: 60 * 60 * 10 })
         return token
     })
 }
