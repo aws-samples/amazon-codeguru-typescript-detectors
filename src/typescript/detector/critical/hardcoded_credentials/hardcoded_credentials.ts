@@ -1,4 +1,4 @@
-// {fact rule=session-fixation@v1.0 defects=1}
+// {fact rule=hardcoded-credentials@v1.0 defects=1}
 
 function nonCompliant() {
   var crypto = require("crypto");
@@ -26,7 +26,7 @@ function nonCompliant() {
 }
 // {/fact}
 
-// {fact rule=session-fixation@v1.0 defects=0}
+// {fact rule=hardcoded-credentials@v1.0 defects=0}
 
 function compliant() {
   var crypto = require("crypto");
