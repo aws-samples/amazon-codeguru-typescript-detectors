@@ -1,4 +1,4 @@
-// {fact rule=session-fixation@v1.0 defects=1}
+// {fact rule=insecure-cryptography@v1.0 defects=1}
 var https = require("https");
 function insecureCryptographyNoncompliant() {
   var ciphers = [
@@ -27,7 +27,7 @@ function insecureCryptographyNoncompliant() {
 }
 // {/fact}
 
-// {fact rule=session-fixation@v1.0 defects=0}
+// {fact rule=insecure-cryptography@v1.0 defects=0}
 var https = require("https");
 function insecureCryptographyCompliant() {
   var ciphers = [
