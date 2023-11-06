@@ -1,24 +1,29 @@
 // {fact rule=server-side-request-forgery@v1.0 defects=1}
-var express = require("express");
-var app = express();
-var request = require("request");
+import express, { Request, Response } from 'express'
+import request from 'request'
+var app = express()
 
 function serverSideRequestForgeryNoncompliant() {
-  app.get("/data/img", (req: { body: { imageUrl: any } }, res: any) => {
-    var url = req.body.imageUrl;
+  app.get('/data/img', (req: Request, res: Response) => {
+    var url = req.body.imageUrl
+
     // Noncompliant: user provided url is used to make a request.
-    request.get(url);
+    request.get(url)
   });
 }
 // {/fact}
 
 // {fact rule=server-side-request-forgery@v1.0 defects=0}
+import express, { Request, Response } from 'express'
+import request from 'request'
+var app = express()
 
-var libxmljs = require("libxmljs");
-var fs = require("fs");
-function xmlExternalEntityCompliant() {
-  const xml = fs.readFileSync("foo.xml");
-  // Compliant: parsing of external entities is disabled by default.
-  const xmlDoc = libxmljs.parseXml(xml, { noblanks: true });
+function serverSideRequestForgeryCompliant() {
+  app.get('/data/img', (req: Request, res: Response) => {
+    // Compliant: url used to make a request is not user provided.
+    var url = 'https://example.com'
+
+    request.get(url)
+  })
 }
 // {/fact}
