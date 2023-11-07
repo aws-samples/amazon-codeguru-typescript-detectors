@@ -1,5 +1,5 @@
 // {fact rule=least-privilege-violation@v1.0 defects=1}
-var { BrowserWindow } = require("electron");
+import { BrowserWindow } from 'electron'
 
 function leastPrivilegeViolationNoncompliant() {
   var win = new BrowserWindow({
@@ -15,7 +15,7 @@ function leastPrivilegeViolationNoncompliant() {
 // {/fact}
 
 // {fact rule=least-privilege-violation@v1.0 defects=0}
-var { BrowserWindow } = require("electron");
+import { BrowserWindow } from 'electron'
 function leastPrivilegeViolationCompliant() {
   var win = new BrowserWindow({
     width: 800,

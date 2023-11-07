@@ -1,7 +1,7 @@
 // {fact rule=integer-overflow@v1.0 defects=1}
 function integerOverflowNoncompliant() {
   // Noncompliant: bigint is assigned to a variable.
-  var max = 154327115334273650000012748329;
+  var max: number = 154327115334273650000012748329;
 }
 //{/fact}
 
