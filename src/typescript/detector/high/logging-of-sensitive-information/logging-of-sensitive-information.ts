@@ -1,5 +1,5 @@
 // {fact rule=logging-of-sensitive-information@v1.0 defects=1}
-var { Signale } = require("signale");
+import { Signale } from 'signale'
 
 function loggingOfSensitiveInformationNoncompliant() {
   var options = {
@@ -17,7 +17,7 @@ function loggingOfSensitiveInformationNoncompliant() {
 // {/fact}
 
 // {fact rule=logging-of-sensitive-information@v1.0 defects=0}
-var { Signale } = require("signale");
+import { Signale } from 'signale'
 
 function loggingOfSensitiveInformationCompliant() {
   var options = {
