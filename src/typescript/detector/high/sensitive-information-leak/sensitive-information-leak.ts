@@ -1,27 +1,29 @@
 // {fact rule=sensitive-information-leak@v1.0 defects=1}
-var express = require("express");
-var helmet = require("helmet");
-var app = express();
-function sensitiveInformationLeakNoncompliant() {
-  app.use(
-    helmet.referrerPolicy({
-      // Noncompliant: sets the policy as no-referrer-when-downgrade.
-      policy: "no-referrer-when-downgrade",
-    }),
-  );
+import express, { Express } from 'express'
+import helmet from 'helmet'
+var app :Express = express()
+function sensitiveInformationLeakNoncompliant(){
+    app.use(
+        helmet.referrerPolicy({
+            // Noncompliant: sets the policy as no-referrer-when-downgrade.
+            policy: 'no-referrer-when-downgrade'
+        })
+    )
 }
 // {/fact}
 
+
 // {fact rule=sensitive-information-leak@v1.0 defects=0}
-var express = require("express");
-var helmet = require("helmet");
-var app = express();
-function sensitiveInformationLeakCompliant() {
-  app.use(
-    helmet.referrerPolicy({
-      // Compliant: sets the policy as no-referrer.
-      policy: "no-referrer",
-    }),
-  );
+import express, { Express } from 'express'
+import helmet from 'helmet'
+var app :Express = express()
+function sensitiveInformationLeakCompliant(){
+    app.use(
+        helmet.referrerPolicy({
+            // Compliant: sets the policy as no-referrer.
+            policy: 'no-referrer'
+        })
+    )
 }
 // {/fact}
+
