@@ -1,8 +1,8 @@
 // {fact rule=stack-trace-exposure@v1.0 defects=1}
-var express = require("express");
-var app = express();
+import express, {Request, Response} from 'express'
+var app = express()
 function stackTraceExposureNoncompliant() {
-  app.get("www.example.com", (req: any, res: { send: (arg0: any) => void }) => {
+  app.get("www.example.com", (req: Request, res: Response) => {
     try {
       throw new Error("");
     } catch (e: unknown | any) {
@@ -15,12 +15,12 @@ function stackTraceExposureNoncompliant() {
 //{/fact}
 
 // {fact rule=stack-trace-exposure@v1.0 defects=0}
-var express = require("express");
-var app = express();
+import express, {Request, Response} from 'express'
+var app = express()
 function stackTraceExposureCompliant() {
   app.get(
     "www.example.com",
-    (req: any, res: { send: (arg0: string) => void }) => {
+    (req: Request, res: Response) => {
       try {
         throw new Error("");
       } catch (e: unknown | any) {
