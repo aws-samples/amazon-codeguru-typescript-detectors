@@ -1,5 +1,5 @@
 // {fact rule=unverified-hostname@v1.0 defects=1}
-var https = require("https");
+import https from 'https'
 function unverifiedHostnameNoncompliant() {
   var options = {
     hostname: "encrypted.google.com",
@@ -19,7 +19,7 @@ function unverifiedHostnameNoncompliant() {
 // {/fact}
 
 // {fact rule=unverified-hostname@v1.0 defects=0}
-var https = require("https");
+import https from 'https'
 function unverifiedHostnameCompliant() {
   var options = {
     hostname: "encrypted.google.com",
