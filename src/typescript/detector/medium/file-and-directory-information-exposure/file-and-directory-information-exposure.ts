@@ -1,28 +1,25 @@
 // {fact rule=file-and-directory-information-exposure@v1.0 defects=1}
-var express = require("express");
-var serveStatic = require("serve-static");
-var app = express();
-function fileAndDirectoryInformationExposureNoncompliant() {
+import express, { Express } from 'express'
+var serveStatic = require("serve-static")
+var app : Express = express()
+
+function fileAndDirectoryInformationExposureNoncompliant()
+{
   // Noncompliant: dotfiles variable is set to 'allow'.
-  var serveStaticMiddleware = serveStatic("public", {
-    index: false,
-    dotfiles: "allow",
-  });
-  app.use(serveStaticMiddleware);
+  var serveStaticMiddleware = serveStatic('public', { index: false, dotfiles: 'allow' })
+  app.use(serveStaticMiddleware)
 }
-//{/fact}
+// {/fact}
 
 // {fact rule=file-and-directory-information-exposure@v1.0 defects=0}
-var express = require("express");
-var serveStatic = require("serve-static");
-var app = express();
+import express, { Express } from 'express'
+var serveStatic = require("serve-static")
+var app : Express = express()
 
-function fileAndDirectoryInformationExposureCompliant(safeDomain: any) {
+function fileAndDirectoryInformationExposureCompliant(safeDomain)
+{
   // Compliant: dotfiles variable is set to 'ignore'.
-  var serveStaticMiddleware = serveStatic("public", {
-    index: false,
-    dotfiles: "ignore",
-  });
-  app.use(serveStaticMiddleware);
+  var serveStaticMiddleware = serveStatic('public', { 'index': false, 'dotfiles': 'ignore' })
+  app.use(serveStaticMiddleware)
 }
-//{/fact}
+// {/fact}
