@@ -1,5 +1,5 @@
 // {fact rule=insufficiently-protected-credentials@v1.0 defects=1}
-var jwt = require("jsonwebtoken");
+import * as jwt from 'jsonwebtoken'
 class Users {
   constructor() {}
 
@@ -7,8 +7,6 @@ class Users {
 }
 
 function insufficientlyProtectedCredentialsNoncompliant() {
-  var req: any, key: any;
-  var User = new Users();
   User.findOne({ email: req.body.email }, function (e: any, user: any) {
     // Noncompliant: object is passed directly to `jsonwebtoken.sign()`.
     var token = jwt.sign(user, key, { expiresIn: 60 * 60 * 10 });
@@ -18,7 +16,7 @@ function insufficientlyProtectedCredentialsNoncompliant() {
 //{/fact}
 
 // {fact rule=insufficiently-protected-credentials@v1.0 defects=0}
-var jwt = require("jsonwebtoken");
+import * as jwt from 'jsonwebtoken'
 
 function insufficientlyProtectedCredentialsCompliant() {
   var req: any, key: any;
