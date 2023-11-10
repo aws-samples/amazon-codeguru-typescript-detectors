@@ -1,5 +1,5 @@
 // {fact rule=insecure-cryptography@v1.0 defects=1}
-var https = require("https");
+import https from 'https'
 function insecureCryptographyNoncompliant() {
   var ciphers = [
     `TLS_DH_anon_WITH_AES_256_GCM_SHA384`,
@@ -28,7 +28,7 @@ function insecureCryptographyNoncompliant() {
 // {/fact}
 
 // {fact rule=insecure-cryptography@v1.0 defects=0}
-var https = require("https");
+import https from 'https'
 function insecureCryptographyCompliant() {
   var ciphers = [
     `TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256`,
