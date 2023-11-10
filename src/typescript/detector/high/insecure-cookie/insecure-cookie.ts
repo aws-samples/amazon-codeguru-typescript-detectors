@@ -1,7 +1,7 @@
 // {fact rule=insecure-cookie@v1.0 defects=1}
-var cookieSession = require("cookie-session");
-var express = require("express");
-var app = express();
+import express, { Express, Request, Response } from 'express'
+import cookieSession from 'cookie-session'
+var app: Express = express()
 function insecureCookieNoncompliant() {
   let session = app.use(
     cookieSession({
@@ -15,9 +15,9 @@ function insecureCookieNoncompliant() {
 // {/fact}
 
 // {fact rule=insecure-cookie@v1.0 defects=0}
-var cookieSession = require("cookie-session");
-var express = require("express");
-var app = express();
+import express, { Express, Request, Response } from 'express'
+import cookieSession from 'cookie-session'
+var app: Express = express()
 function insecureCookieCompliant() {
   // Compliant: by default `httpOnly` is set to true and thus makes cookie secure.
   let session = app.use(

@@ -1,23 +1,24 @@
 // {fact rule=session-fixation@v1.0 defects=1}
-var express = require("express");
-var passport = require("passport");
-var app = express();
+
+import express, { Express, Request, Response } from 'express'
+import passport from 'passport'
+var app: Express = express()
 function sessionFixationNoncompliant() {
   app.post(
     "/somepage",
     passport.authenticate("local", { failureRedirect: "/somepage" }),
-    function (req: any, res: { redirect: (arg0: string) => void }) {
+    function (req: Request, res: Response) {
       // Noncompliant: session.regenerate is absent.
-      res.redirect("/");
+      res.redirect("/")
     },
   );
 }
 // {/fact}
 
 // {fact rule=session-fixation@v1.0 defects=0}
-var express = require("express");
-var passport = require("passport");
-var app = express();
+import express, { Express, Request, Response } from 'express'
+import passport from 'passport'
+var app: Express = express()
 function sessionFixationCompliant() {
   app.post(
     "/somepage",
@@ -27,8 +28,8 @@ function sessionFixationCompliant() {
       res: { redirect: (arg0: string) => void },
     ) {
       // Compliant: session.regenerate is used
-      req.session.regenerate((err: any) => {});
-      res.redirect("/404");
+      req.session.regenerate((err: any) => {})
+      res.redirect("/404")
     },
   );
 }

@@ -1,6 +1,5 @@
 // {fact rule=improper-certificate-validation@v1.0 defects=1}
-var tls = require("tls")
-var fs = require("fs")
+import tls from 'tls'
 
 function improperCertificateValidationNoncompliant() {
   var options = {
@@ -18,8 +17,8 @@ function improperCertificateValidationNoncompliant() {
 
 
 // {fact rule=improper-certificate-validation@v1.0 defects=0}
-var tls = require("tls")
-var fs = require("fs")
+import tls from 'tls'
+import fs from 'fs'
 
 function improperCertificateValidationCompliant() {
   var options = {
